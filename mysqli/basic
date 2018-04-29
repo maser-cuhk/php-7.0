@@ -1,15 +1,17 @@
 	<?php
-   # Get Primary key of a table
+   # Get Primary key of a table (NON Standard SQL Statement)
    # SQL Statement : SHOW KEYS FROM $table_name WHERE Key_name = 'PRIMARY';
    
-   # Get Foreign keys of a table or tables
-   # SQL Statement : SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
-      WHERE `TABLE_SCHEMA`=$database_name AND `TABLE_NAME`= $table_name AND `CONSTRAINT_NAME` <> 'PRIMARY';
-      
-      
-  # Get Primary keys of a table or tables
+   # Get Primary key / Foreign Keys of a table (NON Standard SQL Statement)
+   # SQL Statement : DESC $database.$table_name ($column_name)
+   
+  # Get Primary keys of a table or tables (Standard SQL Statement)
   # SQL Statement : SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
       WHERE `TABLE_SCHEMA`=$database_name AND `TABLE_NAME`= $table_name AND `CONSTRAINT_NAME` = 'PRIMARY';
+      
+  # Get Foreign keys of a table or tables (Standard SQL Statement)
+  # SQL Statement : SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+   WHERE `TABLE_SCHEMA`=$database_name AND `TABLE_NAME`= $table_name AND `CONSTRAINT_NAME` <> 'PRIMARY';
  
   #Parse ini file to variable
   $var = parse_ini_file("URL"); 
