@@ -1,0 +1,35 @@
+	<?php
+   # Get Primary key of a table
+   # SQL Statement : SHOW KEYS FROM $table_name WHERE Key_name = 'PRIMARY';
+   
+   # Get Foreign keys of a table or tables
+   # SQL Statement : SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+      WHERE `TABLE_SCHEMA`=$database_name AND `TABLE_NAME`= $table_name AND `CONSTRAINT_NAME` <> 'PRIMARY';
+      
+      
+  # Get Primary keys of a table or tables
+  # SQL Statement : SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+      WHERE `TABLE_SCHEMA`=$database_name AND `TABLE_NAME`= $table_name AND `CONSTRAINT_NAME` = 'PRIMARY';
+ 
+  #Parse ini file to variable
+  $var = parse_ini_file("URL"); 
+  
+  #Connect MySQL Server using mysqli 
+	$conn = mysqli_connect('servername','username','password','dbname');
+  
+  #Show connection error
+  if (!$conn) {
+    die('Connect Error: ' . mysqli_connect_error());
+  }
+
+  #execute SQL Statement 
+	$result=mysqli_query($conn, $statement)or die(mysqli_error($conn)); 
+	if ($result) {
+   while ($row = mysqli_fetch_array($result)) {
+			} 
+	} else {
+    	echo $mysqli_error($conn);
+	}
+	mysqli_close($conn);
+  
+  ?>
